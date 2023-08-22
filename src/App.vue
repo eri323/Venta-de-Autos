@@ -146,34 +146,68 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <div>
-                  <div>
-
+                <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                      <img src="./img/image-removebg-preview (29).png" class="d-block w-100" alt="...">
+                      
+                    </div>
+                    <div class="carousel-item" >
+                      <img src="./img/car-mercedes-benz-mercedes-amg-mercedes-amg-gt-wallpaper-preview.jpg" class="d-block w-100" alt="...">
+                     
+                    </div>
+                    <div class="carousel-item">
+                      <img src="./img/fondo.png" class="d-block w-100" alt="...">
+                  
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                <div class="containerinfomodal">
+                  <div class="containerinfotabla">
+                    <h2>Caracteristicas</h2>
+                    <table v-for=" ( tarjeta, i ) in TarjetasInfo" :key="i" class="tableinfo">
+                      <tr>
+                        <td style="border-top-left-radius: 15px; border-top-right-radius: 15px;">Modelo: {{tarjeta.Modelo}}</td>
+                      </tr>
+                      <tr>
+                        <td>Kilometraje: {{tarjeta.Kilometraje}}</td>
+                      </tr>
+                      <tr>
+                        <td>Año: {{tarjeta.Año}}</td>
+                      </tr>
+                      <tr>
+                        <td>Placa: {{tarjeta.Placa}}</td>
+                      </tr>
+                      <tr>
+                        <td>Combustible: {{tarjeta.Combustible}}</td>
+                      </tr>
+                      <tr>
+                        <td>Motor: {{tarjeta.Motor}}</td>
+                      </tr>
+                     <tr >
+                      <td style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">Transmision: {{tarjeta.Transmision}}</td>
+                     </tr>
+                    </table>
+                  </div>
+                  <div class="containerinfodescripcion">
+                    <h2>Descripción</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati aliquid, incidunt dolore animi itaque fugit quas id tempora soluta veritatis qui dolorem commodi eius quam, voluptas, illo corporis beatae et?</p>
                   </div>
                 </div>
-                <table v-for=" ( tarjeta, i ) in TarjetasInfo" :key="i" class="tableinfo">
-                  <tr>
-                    <td>Modelo:{{tarjeta.Modelo}}</td>
-                  </tr>
-                  <tr>
-                    <td>Kilometraje: {{tarjeta.Kilometraje}}</td>
-                  </tr>
-                  <tr>
-                    <td>Año: {{tarjeta.Año}}</td>
-                  </tr>
-                  <tr>
-                    <td>Placa: {{tarjeta.Placa}}</td>
-                  </tr>
-                  <tr>
-                    <td>Combustible: {{tarjeta.Combustible}}</td>
-                  </tr>
-                  <tr>
-                    <td>Motor: {{tarjeta.Motor}}</td>
-                  </tr>
-                 <tr>
-                  <td>Transmision: {{tarjeta.Transmision}}</td>
-                 </tr>
-                </table>
+                
               </div>
               <div class="modal-footer">
                 <button
@@ -330,7 +364,23 @@ function limpiarModal(i) {
 tr:nth-child(odd) {
   background-color: #a0f1ff;
 }
-
+.containerinfomodal{
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.containerinfotabla{
+  text-align: center;
+  display: grid;
+  gap: 10px;
+}
+.containerinfodescripcion{
+  text-align: center;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .intro {
   font-size: 25px;
   width: 300px;
@@ -511,5 +561,80 @@ h4 {
   padding: 5px;
   border-radius: 15px;
   border: none;
+}
+.modal-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carousel-inner{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 400px;
+  height: 300px;
+  border-radius: 25px;
+  overflow: hidden;
+
+  
+}
+.carousel-item, img{
+  width: 400px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+  position: relative;
+}
+.slider{
+  width: 300%;
+  height: 100%;
+  display: flex;
+ 
+}
+.slider-section{
+  width: calc(100%/3);
+  height: 100%;
+}
+
+.btn-left{
+  display: flex;
+  position: absolute;
+  top: 21%;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff81;
+  transform: translate(0,-30%);
+  transition: .5s ease;
+  user-select: none;
+  left: 10px;
+}
+.btn-right{
+  
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 21%;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff81;
+  transform: translate(0,-30%);
+  transition: .5s ease;
+  user-select: none;
+}
+.btn-left:hover{
+  background-color: #333333d4;
+  color: #fff;
+}
+.btn-right:hover{
+  background-color: #333333d4;
+  color: #fff;
 }
 </style>
