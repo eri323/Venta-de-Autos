@@ -2,7 +2,7 @@
   <div class="barras">
     <div class="barra1">
       <div class="Pbarra">
-        <h1 class="titulo">Ka-Chow</h1>
+        <h1 class="titulo">Fast and safe</h1>
       </div>
       <div class="textoencacontainer">
         <div class="textoenca">
@@ -18,53 +18,40 @@
     <div class="barra2">
       <div class="barraopc">
         <div class="opcinicio" id="opcs">
-          <h4>Inicio</h4>
+          <h4 class="opcstext">Inicio</h4>
         </div>
         <div class="opcbuscar" id="opcs">
-          <h4>Buscar</h4>
+          <h4 class="opcstext">Buscar</h4>
         </div>
         <div class="opcvender" id="opcs">
-          <h4>Vender</h4>
+          <h4 class="opcstext">Vender</h4>
         </div>
         <div class="opcayuda" id="opcs">
-          <h4>Ayuda</h4>
+          <h4 class="opcstext">Ayuda</h4>
         </div>
       </div>
       <div class="barraimg">
-        <button
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          class="botoncarrito"
-        >
+        <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="opcsboton">
           <img src="./img/carrito.png" alt="" class="img" />
         </button>
       </div>
-      <div
-        class="modal"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" id="modal-contentre">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
                 Nuevo registro
               </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" ref="modalbody">
               <table class="table">
                 <thead class="thead">
                   <tr>
                     <th style="border-top-left-radius: 25px">Vehiculo</th>
+                    <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Subtotal</th>
                     <th>Modelo</th>
                     <th style="border-top-right-radius: 25px">Opciones</th>
                   </tr>
@@ -74,7 +61,19 @@
                     <td>
                       <img :src="tarjec.img" alt="" style="width: 100px" />
                     </td>
-                    <td>{{ tarjec.Precio }}</td>
+                    <td>{{ tarjec.cantidadEnCarrito }}</td>
+                    <td>${{ (tarjec.Precio).toLocaleString("es-ES", {
+                      style: "currency",
+                      currency: "COP",
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 2,
+                    }) }}</td>
+                    <td>${{ (tarjec.Precio* tarjec.cantidadEnCarrito).toLocaleString("es-ES", {
+                      style: "currency",
+                      currency: "COP",
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 2,
+                    }) }}</td>
                     <td>{{ tarjec.Modelo }}</td>
                     <td>
                       <button @click="Eliminar(i)" class="botonelimminar">
@@ -83,6 +82,20 @@
                     </td>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr>
+
+                    <td style="font-weight: bolder; font-size: 20px;">Total a pagar:</td>
+                    <td>${{ (total).toLocaleString("es-ES", {
+                      style: "currency",
+                      currency: "COP",
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 2,
+                    }) }}</td>
+                  </tr>
+                </tfoot>
+
+
               </table>
             </div>
 
@@ -103,7 +116,12 @@
           <img :src="tarje.img" alt="img" id="carrostarjetas" />
         </div>
         <h5 class="modelo">{{ tarje.Modelo }}</h5>
-        <h5 class="precio">{{ tarje.Precio }}</h5>
+        <h5 class="precio">${{ (tarje.Precio).toLocaleString("es-ES", {
+          style: "currency",
+          currency: "COP",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        }) }}</h5>
         <div class="textos">
           <h5 class="km" id="datos">{{ tarje.Kilometraje }}</h5>
           <h5 class="año" id="datos">{{ tarje.Año }}</h5>
@@ -111,66 +129,54 @@
         </div>
         <div class="botones">
           <button class="boto1" id="boto" @click="añadirP(i)">Comprar</button>
-          <button
-            class="boto2"
-            id="boto"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-            @click="añadirinfo(i)"
-          >
+          <button class="boto2" id="boto" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            @click="añadirinfo(i)">
             Mas info
           </button>
         </div>
 
-        <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">
                   Informacion completa
                 </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <div id="carouselExampleDark" class="carousel carousel-dark slide">
                   <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                      aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
                   </div>
                   <div class="carousel-inner">
-                    <div class="carousel-item active" >
+                    <div class="carousel-item active">
                       <img src="./img/image-removebg-preview (29).png" class="d-block w-100" alt="...">
-                      
+
                     </div>
-                    <div class="carousel-item" >
-                      <img src="./img/car-mercedes-benz-mercedes-amg-mercedes-amg-gt-wallpaper-preview.jpg" class="d-block w-100" alt="...">
-                     
+                    <div class="carousel-item">
+                      <img src="./img/car-mercedes-benz-mercedes-amg-mercedes-amg-gt-wallpaper-preview.jpg"
+                        class="d-block w-100" alt="...">
+
                     </div>
                     <div class="carousel-item">
                       <img src="./img/fondo.png" class="d-block w-100" alt="...">
-                  
+
                     </div>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                   </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                   </button>
@@ -180,42 +186,52 @@
                     <h2>Caracteristicas</h2>
                     <table v-for=" ( tarjeta, i ) in TarjetasInfo" :key="i" class="tableinfo">
                       <tr>
-                        <td style="border-top-left-radius: 15px; border-top-right-radius: 15px;">Modelo: {{tarjeta.Modelo}}</td>
+                        <td style="border-top-left-radius: 15px; border-top-right-radius: 15px;">Modelo:
+                          {{ tarjeta.Modelo }}</td>
                       </tr>
                       <tr>
-                        <td>Kilometraje: {{tarjeta.Kilometraje}}</td>
+                        <td>Precio: ${{ (tarjeta.Precio).toLocaleString("es-ES", {
+                          style: "currency",
+                          currency: "COP",
+                          minimumFractionDigits: 0,
+                          maximumFractionDigits: 2,
+                        }) }}</td>
                       </tr>
                       <tr>
-                        <td>Año: {{tarjeta.Año}}</td>
+                        <td>Kilometraje: {{ tarjeta.Kilometraje }}</td>
                       </tr>
                       <tr>
-                        <td>Placa: {{tarjeta.Placa}}</td>
+                        <td>Año: {{ tarjeta.Año }}</td>
                       </tr>
                       <tr>
-                        <td>Combustible: {{tarjeta.Combustible}}</td>
+                        <td>Placa: {{ tarjeta.Placa }}</td>
                       </tr>
                       <tr>
-                        <td>Motor: {{tarjeta.Motor}}</td>
+                        <td>Combustible: {{ tarjeta.Combustible }}</td>
                       </tr>
-                     <tr >
-                      <td style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">Transmision: {{tarjeta.Transmision}}</td>
-                     </tr>
+                      <tr>
+                        <td>Motor: {{ tarjeta.Motor }}</td>
+                      </tr>
+                      <tr>
+                          <td>Color: {{ tarjeta.Color }}</td>
+                        </tr>
+                      <tr>
+                        <td style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">Transmision:
+                          {{ tarjeta.Transmision }}</td>
+                      </tr>
                     </table>
                   </div>
                   <div class="containerinfodescripcion">
                     <h2>Descripción</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati aliquid, incidunt dolore animi itaque fugit quas id tempora soluta veritatis qui dolorem commodi eius quam, voluptas, illo corporis beatae et?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati aliquid, incidunt dolore animi
+                      itaque fugit quas id tempora soluta veritatis qui dolorem commodi eius quam, voluptas, illo corporis
+                      beatae et?</p>
                   </div>
                 </div>
-                
+
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  @click="limpiarModal(i)"
-                >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiarModal(i)">
                   Close
                 </button>
               </div>
@@ -228,107 +244,150 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 const tarjetas = ref([
   {
-    Precio: "280.000.000",
-    Kilometraje: "10.000 Km",
-    Modelo: "Audi R8",
+    id: 1,
+    Precio: 142900000,
+    Kilometraje: "34.000 Km",
+    Modelo: "Audi Q5 Atracction quattro",
     Año: 2020,
     Placa: "ABC-201",
     Combustible: "Gasolina",
-    Motor: "V6 3.5 CC",
-    Transmision :"Automatica",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKM7E2zDI8453KjKfJWaT3ZKjZNYz_9uv85yEwWnrP35cXiQiXKgEArcalLDAY6xSx0Vg&usqp=CAU",
+    Motor: "2.0 CC",
+    Transmision: "Automatica",
+    Color: "Gris",
+    img: "https://http2.mlstatic.com/D_NQ_NP_874721-MCO70220176890_062023-O.webp",
+    cantidadEnCarrito: 1
   },
 
   {
-    Precio: "280.000.000",
-    Kilometraje: "22.000 Km",
-    Modelo: "BMW",
+    id: 2,
+    Precio: 193000000,
+    Kilometraje: "50.000 Km",
+    Modelo: "Bmw X4 Xdrive 30i",
     Año: 2020,
     Placa: "ABC-201",
-    img: "https://www.bmw.com.co/content/dam/bmw/common/all-models/m-series/x6m/2019/inspire/bmw-x6-m-inspire-mg-competition-desktop-02.jpg",
+    Combustible: "Gasolina",
+    Motor: "2.0 CC",
+    Transmision: "Automatica",
+    Color: "Blanco",
+    img: "https://http2.mlstatic.com/D_NQ_NP_966351-MCO71043873668_082023-O.webp",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
-    Kilometraje: "10.000 Km",
-    Modelo: "Chevrolet Spark",
-    Año: 2020,
-    Placa: "ABC-201",
-    img: "https://img.autosblogmexico.com/2019/12/12/jy4ZkaKS/chevrolet-spark-resea-01-7402.png",
+    id: 3,
+    Precio: 33000000,
+    Kilometraje: "89.000 Km",
+    Modelo: "Chevrolet Spark Gt ",
+    Año: 2015,
+    Placa: "MUT-455",
+    Combustible: "Gasolina",
+    Motor: "1.2 CC",
+    Transmision: "Mecanica",
+    Color: "Rojo",
+    img: "https://http2.mlstatic.com/D_NQ_NP_686542-MCO71168707266_082023-O.webp",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
-    Kilometraje: "10.000 Km",
-    Modelo: "Toyota Fourtuner",
-    Año: 2017,
-    Placa: "ABC-201",
-    img: "https://www.valorenlinea.com/sn_fotos/auto_53301_img_344984.jpg",
+    id: 4,
+    Precio: 178500000,
+    Kilometraje: "39.052 Km",
+    Modelo: "Toyota Fortuner Srv",
+    Año: 2018,
+    Placa: "EMM-649",
+    Combustible: "Gasolina",
+    Motor: "2.7 CC",
+    Transmision: "Automatica",
+    Color: "Gris",
+    img: "https://http2.mlstatic.com/D_NQ_NP_722288-MCO70200116805_062023-O.webp",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
-    Kilometraje: "22.000 Km",
+    id: 5,
+    Precio: 280000000,
+    Kilometraje: "621.440 Km",
     Modelo: "Nissan Patrol",
     Año: 2020,
-    Placa: "ABC-201",
+    Placa: "IAH-061",
+    Combustible: "Gasolina",
+    Motor: "4.0 CC",
+    Transmision: "Mecanica",
+    Color: "Blanco",
     img: "https://http2.mlstatic.com/D_NQ_NP_773796-MCO50452263450_062022-W.webp",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 6,
+    Precio: 280000000,
     Kilometraje: "10.000 Km",
     Modelo: "Mazda 3",
     Año: 2019,
     Placa: "ABC-201",
     img: "https://th.bing.com/th/id/OIP.1MBvI3Kx7WtwNYtf-XC4mAHaE8?w=249&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 7,
+    Precio: 280000000,
     Kilometraje: "10.000 Km",
     Modelo: "Skopa",
     Año: 2000,
     Placa: "ABC-201",
     img: "https://img.autoabc.lv/Skoda-Octavia/Skoda-Octavia_2000_Hecbeks_234550528.jpg",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 8,
+    Precio: 280000000,
     Kilometraje: "22.000 Km",
     Modelo: "Ford Escape",
     Año: 2016,
     Placa: "ABC-201",
     img: "https://th.bing.com/th/id/OIP.MA4Ne4km-1kf7BwChNTEDQHaFP?pid=ImgDet&rs=1",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 9,
+    Precio: 280000000,
     Kilometraje: "10.000 Km",
     Modelo: "Ford Raptor",
     Año: 2020,
     Placa: "ABC-201",
+
     img: "https://th.bing.com/th/id/R.98e2bac7c17fe163259e44a0f40edd42?rik=8pRDghF967DFxg&riu=http%3a%2f%2fpictures.topspeed.com%2fIMG%2fcrop%2f201601%2f2017-ford-f-150-raptor-6_1600x0w.jpg&ehk=bQBVHrsEXP02D550iEERzTYXNmnh1GB4e%2bXRThS6esI%3d&risl=&pid=ImgRaw&r=0",
+    cantidadEnCarrito: 1
+
   },
   {
-    Precio: "280.000.000",
+    id: 10,
+    Precio: 280000000,
     Kilometraje: "10.000 Km",
     Modelo: "Renault 12",
     Año: 2020,
     Placa: "ABC-201",
     img: "https://th.bing.com/th/id/OIP.Wk1MGjaA4vqR7FX8xI1HswHaDq?pid=ImgDet&rs=1",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 11,
+    Precio: 280000000,
     Kilometraje: "22.000 Km",
     Modelo: "Renault Duster",
     Año: 2020,
     Placa: "ABC-201",
     img: "https://th.bing.com/th/id/OIP.rLINBQsFnz656Jvp7lhobgHaEK?w=297&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    cantidadEnCarrito: 1
   },
   {
-    Precio: "280.000.000",
+    id: 12,
+    Precio: 280000000,
     Kilometraje: "10.000 Km",
     Modelo: "Volkswagen Golf",
     Año: 2020,
     Placa: "ABC-201",
     img: "https://th.bing.com/th/id/R.adecd608f2b2534a41d4ffc7776a4734?rik=rsogiHGjUIvIXg&pid=ImgRaw&r=0",
+    cantidadEnCarrito: 1
   },
 ]);
 
@@ -336,11 +395,22 @@ const TarjetasCompradas = ref([]);
 
 const TarjetasInfo = ref([]);
 
-let tarjetaSeleccionada = ref(null);
+
 
 function añadirP(index) {
-  let tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
-  TarjetasCompradas.value.push(tarjetaSeleccionada); // Agrega la tarjeta al carrito  
+  const tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
+
+  // Verificar si el producto ya está en el carrito
+  const productoExistente = TarjetasCompradas.value.find(p => p.id === tarjetaSeleccionada.id);
+
+  if (productoExistente) {
+    // Si el producto ya está en el carrito, aumentar su cantidad
+    productoExistente.cantidadEnCarrito += 1;
+  } else {
+    // Si el producto no está en el carrito, añadirlo al carrito
+    tarjetaSeleccionada.cantidadEnCarrito = 1;
+    TarjetasCompradas.value.push(tarjetaSeleccionada);
+  }
 }
 function añadirinfo(index) {
   let tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
@@ -353,73 +423,102 @@ function Eliminar(i) {
 function limpiarModal(i) {
   TarjetasInfo.value.splice(i, 1);
 }
+
+const total = computed(() => {
+  return TarjetasCompradas.value.reduce((total, tarjetas) => total + tarjetas.Precio * tarjetas.cantidadEnCarrito, 0)
+})
+function vaciarCarrito(){
+  TarjetasCompradas.value=[]
+}
 </script>
 
 <style scoped>
+
+@font-face{
+  font-family: 'Mia';
+  src: url('./fonts/Sportesia.otf');
+}
 .titulo {
   color: white;
   display: flex;
   justify-content: center;
+  font-family: 'Mia';
 }
+
 tr:nth-child(odd) {
   background-color: #a0f1ff;
 }
-.containerinfomodal{
+
+.containerinfomodal {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
 }
-.containerinfotabla{
+#modal-contentre {
+  width: 1000px;
+}
+.containerinfotabla {
   text-align: center;
   display: grid;
   gap: 10px;
 }
-.containerinfodescripcion{
+
+.containerinfodescripcion {
   text-align: center;
   padding: 25px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .intro {
   font-size: 25px;
   width: 300px;
 }
+
 .Pbarra {
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .table {
   border-collapse: collapse;
 }
+
 .thead,
 th {
   background-color: #3d5af1;
   color: white;
   border-bottom: 3px solid black;
 }
+
 .textoenca {
   color: white;
 }
+
 .tbody,
 tr,
 td {
   padding: 10px;
   text-align: center;
 }
+
 .textoencacontainer {
   display: flex;
   justify-content: end;
   text-align: right;
   padding: 55px 25px 0px 0px;
 }
+
 .barras {
   display: flex;
   flex-direction: column;
 }
+
 .modal {
   color: black;
 }
+
 .barra1 {
   background-color: #1d1d4f;
   padding: 20px;
@@ -454,7 +553,7 @@ td {
   display: flex;
   justify-content: space-around;
   gap: 35px;
-  color: #e2f3f5;
+  color: #b6b6b6;
 }
 
 #opcs,
@@ -465,23 +564,46 @@ h4 {
 .divimg {
   display: flex;
   justify-content: center;
+ 
 }
 
 .B {
   display: flex;
 }
 
-.Buscar {
-  background-color: #9a9a9a;
-  padding: 10px;
-}
-.botoncarrito {
+
+.opcsboton {
+  position: relative;
+  display: block;
+  transition: 0.5s;
+  cursor: pointer;
   background-color: #3d5af1;
   border: none;
 }
-.botoncarrito:hover {
-  border-bottom: rgb(0, 0, 0) 3px solid;
+
+.opcsboton::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 15%;
+  top: 120%;
+  left: 0;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+  background-color: #000000;
 }
+
+.opcsboton:hover {
+  color: white;
+}
+
+
+.opcsboton:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .img {
   width: 35px;
 }
@@ -497,9 +619,6 @@ h4 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#opcs:hover {
-  border-bottom: rgb(0, 0, 0) 3px solid;
-}
 
 #boto {
   padding: 10px;
@@ -513,6 +632,7 @@ h4 {
   border: 2px solid #3d5af1;
   transform: scale(1, 1);
 }
+
 .botonelimminar:hover {
   background-color: rgb(255, 179, 179);
   transform: scale(1.1);
@@ -524,6 +644,7 @@ h4 {
   border-radius: 10px;
   padding: 5px;
 }
+
 .carros {
   padding: 20px 200px;
   display: flex;
@@ -539,8 +660,8 @@ h4 {
 }
 
 #carrostarjetas {
-  width: 200px;
-  height: 130px;
+  width: 300px;
+  height: 200px;
 }
 
 .tarjeta {
@@ -562,12 +683,14 @@ h4 {
   border-radius: 15px;
   border: none;
 }
-.modal-body{
+
+.modal-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.carousel-inner{
+
+.carousel-inner {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -576,65 +699,45 @@ h4 {
   border-radius: 25px;
   overflow: hidden;
 
-  
+
 }
-.carousel-item, img{
+
+.carousel-item,
+img {
   width: 400px;
   height: 100%;
   object-fit: cover;
   border-radius: 25px;
   position: relative;
 }
-.slider{
-  width: 300%;
-  height: 100%;
-  display: flex;
- 
-}
-.slider-section{
-  width: calc(100%/3);
-  height: 100%;
+
+.opcstext {
+  position: relative;
+  display: block;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
-.btn-left{
-  display: flex;
+.opcstext::after {
   position: absolute;
-  top: 21%;
-  font-size: 1.5rem;
-  background-color: transparent;
-  border-radius: 50%;
-  padding: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #ffffff81;
-  transform: translate(0,-30%);
-  transition: .5s ease;
-  user-select: none;
-  left: 10px;
+  content: "";
+  width: 100%;
+  height: 15%;
+  top: 120%;
+  left: 0;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+  background-color: #000000;
 }
-.btn-right{
-  
-  display: flex;
-  position: absolute;
-  right: 10px;
-  top: 21%;
-  font-size: 1.5rem;
-  background-color: transparent;
-  border-radius: 50%;
-  padding: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #ffffff81;
-  transform: translate(0,-30%);
-  transition: .5s ease;
-  user-select: none;
+
+.opcstext:hover {
+  color: white;
 }
-.btn-left:hover{
-  background-color: #333333d4;
-  color: #fff;
-}
-.btn-right:hover{
-  background-color: #333333d4;
-  color: #fff;
+
+
+.opcstext:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 </style>
