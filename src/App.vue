@@ -6,13 +6,14 @@
       </div>
       <div class="textoencacontainer">
         <div class="textoenca">
-          <p class="intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quas, laborum sequi iure quod officia
-            doloribus earum consectetur praesentium quam eius reiciendis magnam sapiente beatae quia provident. Asperiores,
-            nostrum laudantium.
+          <p class="intro">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+            quas, laborum sequi iure quod officia doloribus earum consectetur
+            praesentium quam eius reiciendis magnam sapiente beatae quia
+            provident. Asperiores, nostrum laudantium.
           </p>
         </div>
       </div>
-      
     </div>
     <div class="barra2">
       <div class="barraopc">
@@ -28,51 +29,64 @@
         <div class="opcayuda" id="opcs">
           <h4>Ayuda</h4>
         </div>
-
       </div>
       <div class="barraimg">
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="botoncarrito">
-          <img src="./img/carrito.png" alt="" class="img">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          class="botoncarrito"
+        >
+          <img src="./img/carrito.png" alt="" class="img" />
         </button>
-        
       </div>
-      <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        class="modal"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo registro</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Nuevo registro
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body" ref="modalbody">
-              <table class="table" >
+              <table class="table">
                 <thead class="thead">
                   <tr>
-                    <th style="border-top-left-radius: 25px;">Vehiculo</th>
+                    <th style="border-top-left-radius: 25px">Vehiculo</th>
                     <th>Precio</th>
                     <th>Modelo</th>
-                    <th style="border-top-right-radius: 25px;">Opciones</th>
+                    <th style="border-top-right-radius: 25px">Opciones</th>
                   </tr>
                 </thead>
                 <tbody class="tbody">
-                  <tr v-for=" (tarjec, i ) in TarjetasCompradas" :key="i">
+                  <tr v-for="(tarjec, i) in TarjetasCompradas" :key="i">
                     <td>
-                      <img :src="tarjec.img" alt="" style="width: 100px;">
+                      <img :src="tarjec.img" alt="" style="width: 100px" />
                     </td>
-                    <td>{{tarjec.Precio}}</td>
-                    <td>{{tarjec.Modelo}}</td>
-                    <td><button @click="Eliminar(i)" class="botonelimminar">❌</button></td>
+                    <td>{{ tarjec.Precio }}</td>
+                    <td>{{ tarjec.Modelo }}</td>
+                    <td>
+                      <button @click="Eliminar(i)" class="botonelimminar">
+                        ❌
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
-
-
-
             </div>
 
-            <div class="modal-footer">
-              
-            </div>
+            <div class="modal-footer"></div>
           </div>
         </div>
       </div>
@@ -83,14 +97,13 @@
   </div>
 
   <div class="B">
-
     <div class="carros">
-      <div v-for=" (tarje, i ) in tarjetas" :key="i" class="tarjeta">
+      <div v-for="(tarje, i) in tarjetas" :key="i" class="tarjeta">
         <div class="divimg">
-          <img :src="tarje.img" alt="img" id="carrostarjetas">
+          <img :src="tarje.img" alt="img" id="carrostarjetas" />
         </div>
         <h5 class="modelo">{{ tarje.Modelo }}</h5>
-        <h5 class="precio">{{tarje.Precio}}</h5>
+        <h5 class="precio">{{ tarje.Precio }}</h5>
         <div class="textos">
           <h5 class="km" id="datos">{{ tarje.Kilometraje }}</h5>
           <h5 class="año" id="datos">{{ tarje.Año }}</h5>
@@ -98,41 +111,213 @@
         </div>
         <div class="botones">
           <button class="boto1" id="boto" @click="añadirP(i)">Comprar</button>
-          <button class="boto2" id="boto">Mas info</button>
+          <button
+            class="boto2"
+            id="boto"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            @click="añadirinfo(i)"
+          >
+            Mas info
+          </button>
+        </div>
+
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  Informacion completa
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <div>
+
+                  </div>
+                </div>
+                <table v-for=" ( tarjeta, i ) in TarjetasInfo" :key="i" class="tableinfo">
+                  <tr>
+                    <td>Modelo:{{tarjeta.Modelo}}</td>
+                  </tr>
+                  <tr>
+                    <td>Kilometraje: {{tarjeta.Kilometraje}}</td>
+                  </tr>
+                  <tr>
+                    <td>Año: {{tarjeta.Año}}</td>
+                  </tr>
+                  <tr>
+                    <td>Placa: {{tarjeta.Placa}}</td>
+                  </tr>
+                  <tr>
+                    <td>Combustible: {{tarjeta.Combustible}}</td>
+                  </tr>
+                  <tr>
+                    <td>Motor: {{tarjeta.Motor}}</td>
+                  </tr>
+                 <tr>
+                  <td>Transmision: {{tarjeta.Transmision}}</td>
+                 </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  @click="limpiarModal(i)"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</template> 
+</template>
 
 <script setup>
 import { ref } from "vue";
 const tarjetas = ref([
-  {Precio:"280.000.000", Kilometraje: "10.000 Km", Modelo: "Audi R8", Año: 2020, Placa: "ABC-201", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKM7E2zDI8453KjKfJWaT3ZKjZNYz_9uv85yEwWnrP35cXiQiXKgEArcalLDAY6xSx0Vg&usqp=CAU" },
-  { Precio:"280.000.000",Kilometraje: "22.000 Km", Modelo: "BMW", Año: 2020, Placa: "ABC-201", img: "https://www.bmw.com.co/content/dam/bmw/common/all-models/m-series/x6m/2019/inspire/bmw-x6-m-inspire-mg-competition-desktop-02.jpg" },
-  { Precio:"280.000.000", Kilometraje: "10.000 Km", Modelo: "Chevrolet Spark", Año: 2020, Placa: "ABC-201", img: "https://img.autosblogmexico.com/2019/12/12/jy4ZkaKS/chevrolet-spark-resea-01-7402.png" },
-  {  Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Toyota Fourtuner", Año: 2017, Placa: "ABC-201", img: "https://www.valorenlinea.com/sn_fotos/auto_53301_img_344984.jpg" },
-  { Precio:"280.000.000",Kilometraje: "22.000 Km", Modelo: "Nissan Patrol", Año: 2020, Placa: "ABC-201", img: "https://http2.mlstatic.com/D_NQ_NP_773796-MCO50452263450_062022-W.webp" },
-  { Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Mazda 3", Año: 2019, Placa: "ABC-201", img: "https://th.bing.com/th/id/OIP.1MBvI3Kx7WtwNYtf-XC4mAHaE8?w=249&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" },
-  { Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Skopa", Año: 2000, Placa: "ABC-201", img: "https://img.autoabc.lv/Skoda-Octavia/Skoda-Octavia_2000_Hecbeks_234550528.jpg" },
-  { Precio:"280.000.000",Kilometraje: "22.000 Km", Modelo: "Ford Escape", Año: 2016, Placa: "ABC-201", img: "https://th.bing.com/th/id/OIP.MA4Ne4km-1kf7BwChNTEDQHaFP?pid=ImgDet&rs=1" },
-  { Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Ford Raptor", Año: 2020, Placa: "ABC-201", img: "https://th.bing.com/th/id/R.98e2bac7c17fe163259e44a0f40edd42?rik=8pRDghF967DFxg&riu=http%3a%2f%2fpictures.topspeed.com%2fIMG%2fcrop%2f201601%2f2017-ford-f-150-raptor-6_1600x0w.jpg&ehk=bQBVHrsEXP02D550iEERzTYXNmnh1GB4e%2bXRThS6esI%3d&risl=&pid=ImgRaw&r=0" },
-  { Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Renault 12", Año: 2020, Placa: "ABC-201", img: "https://th.bing.com/th/id/OIP.Wk1MGjaA4vqR7FX8xI1HswHaDq?pid=ImgDet&rs=1" },
-  { Precio:"280.000.000",Kilometraje: "22.000 Km", Modelo: "Renault Duster", Año: 2020, Placa: "ABC-201", img: "https://th.bing.com/th/id/OIP.rLINBQsFnz656Jvp7lhobgHaEK?w=297&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" },
-  { Precio:"280.000.000",Kilometraje: "10.000 Km", Modelo: "Volkswagen Golf", Año: 2020, Placa: "ABC-201", img: "https://th.bing.com/th/id/R.adecd608f2b2534a41d4ffc7776a4734?rik=rsogiHGjUIvIXg&pid=ImgRaw&r=0" },
-])
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Audi R8",
+    Año: 2020,
+    Placa: "ABC-201",
+    Combustible: "Gasolina",
+    Motor: "V6 3.5 CC",
+    Transmision :"Automatica",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKM7E2zDI8453KjKfJWaT3ZKjZNYz_9uv85yEwWnrP35cXiQiXKgEArcalLDAY6xSx0Vg&usqp=CAU",
+  },
 
+  {
+    Precio: "280.000.000",
+    Kilometraje: "22.000 Km",
+    Modelo: "BMW",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://www.bmw.com.co/content/dam/bmw/common/all-models/m-series/x6m/2019/inspire/bmw-x6-m-inspire-mg-competition-desktop-02.jpg",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Chevrolet Spark",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://img.autosblogmexico.com/2019/12/12/jy4ZkaKS/chevrolet-spark-resea-01-7402.png",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Toyota Fourtuner",
+    Año: 2017,
+    Placa: "ABC-201",
+    img: "https://www.valorenlinea.com/sn_fotos/auto_53301_img_344984.jpg",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "22.000 Km",
+    Modelo: "Nissan Patrol",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://http2.mlstatic.com/D_NQ_NP_773796-MCO50452263450_062022-W.webp",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Mazda 3",
+    Año: 2019,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/OIP.1MBvI3Kx7WtwNYtf-XC4mAHaE8?w=249&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Skopa",
+    Año: 2000,
+    Placa: "ABC-201",
+    img: "https://img.autoabc.lv/Skoda-Octavia/Skoda-Octavia_2000_Hecbeks_234550528.jpg",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "22.000 Km",
+    Modelo: "Ford Escape",
+    Año: 2016,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/OIP.MA4Ne4km-1kf7BwChNTEDQHaFP?pid=ImgDet&rs=1",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Ford Raptor",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/R.98e2bac7c17fe163259e44a0f40edd42?rik=8pRDghF967DFxg&riu=http%3a%2f%2fpictures.topspeed.com%2fIMG%2fcrop%2f201601%2f2017-ford-f-150-raptor-6_1600x0w.jpg&ehk=bQBVHrsEXP02D550iEERzTYXNmnh1GB4e%2bXRThS6esI%3d&risl=&pid=ImgRaw&r=0",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Renault 12",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/OIP.Wk1MGjaA4vqR7FX8xI1HswHaDq?pid=ImgDet&rs=1",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "22.000 Km",
+    Modelo: "Renault Duster",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/OIP.rLINBQsFnz656Jvp7lhobgHaEK?w=297&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+  },
+  {
+    Precio: "280.000.000",
+    Kilometraje: "10.000 Km",
+    Modelo: "Volkswagen Golf",
+    Año: 2020,
+    Placa: "ABC-201",
+    img: "https://th.bing.com/th/id/R.adecd608f2b2534a41d4ffc7776a4734?rik=rsogiHGjUIvIXg&pid=ImgRaw&r=0",
+  },
+]);
 
 const TarjetasCompradas = ref([]);
 
+const TarjetasInfo = ref([]);
+
+let tarjetaSeleccionada = ref(null);
+
 function añadirP(index) {
-  const tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
-  TarjetasCompradas.value.push(tarjetaSeleccionada); // Agrega la tarjeta al carrito
-  Limpiar();
+  let tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
+  TarjetasCompradas.value.push(tarjetaSeleccionada); // Agrega la tarjeta al carrito  
+}
+function añadirinfo(index) {
+  let tarjetaSeleccionada = tarjetas.value[index]; // Llamar la tarjeta seleccionada
+  TarjetasInfo.value.push(tarjetaSeleccionada);
+}
+function Eliminar(i) {
+  TarjetasCompradas.value.splice(i, 1);
 }
 
-function Eliminar(i) {
-  TarjetasCompradas.value.splice(i, 1)
+function limpiarModal(i) {
+  TarjetasInfo.value.splice(i, 1);
 }
 </script>
 
@@ -140,9 +325,13 @@ function Eliminar(i) {
 .titulo {
   color: white;
   display: flex;
- justify-content: center;
+  justify-content: center;
 }
-.intro{
+tr:nth-child(odd) {
+  background-color: #a0f1ff;
+}
+
+.intro {
   font-size: 25px;
   width: 300px;
 }
@@ -150,23 +339,25 @@ function Eliminar(i) {
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.table{
+.table {
   border-collapse: collapse;
-  
 }
-.thead, th{
-  background-color: #3D5AF1;
+.thead,
+th {
+  background-color: #3d5af1;
   color: white;
   border-bottom: 3px solid black;
 }
-.textoenca{
+.textoenca {
   color: white;
 }
-.tbody, tr, td{
+.tbody,
+tr,
+td {
   padding: 10px;
   text-align: center;
 }
-.textoencacontainer{
+.textoencacontainer {
   display: flex;
   justify-content: end;
   text-align: right;
@@ -192,7 +383,7 @@ function Eliminar(i) {
 }
 
 .barra2 {
-  background-color: #3D5AF1;
+  background-color: #3d5af1;
   color: white;
   display: flex;
   padding: 10px;
@@ -201,8 +392,7 @@ function Eliminar(i) {
 }
 
 .barra3 {
-
-  background-color: #E2F3F5;
+  background-color: #e2f3f5;
   padding: 25px;
   display: flex;
   justify-content: center;
@@ -214,11 +404,11 @@ function Eliminar(i) {
   display: flex;
   justify-content: space-around;
   gap: 35px;
-  color: #E2F3F5;
-  
+  color: #e2f3f5;
 }
 
-#opcs, h4{
+#opcs,
+h4 {
   font-size: 20px;
 }
 
@@ -235,16 +425,15 @@ function Eliminar(i) {
   background-color: #9a9a9a;
   padding: 10px;
 }
-.botoncarrito{
-  background-color: #3D5AF1;
+.botoncarrito {
+  background-color: #3d5af1;
   border: none;
 }
-.botoncarrito:hover{
+.botoncarrito:hover {
   border-bottom: rgb(0, 0, 0) 3px solid;
 }
 .img {
   width: 35px;
-
 }
 
 .botones {
@@ -271,15 +460,12 @@ function Eliminar(i) {
 }
 
 #boto:hover {
-  border: 2px solid #3D5AF1;
-  transform: scale(1,1);
- 
+  border: 2px solid #3d5af1;
+  transform: scale(1, 1);
 }
 .botonelimminar:hover {
   background-color: rgb(255, 179, 179);
   transform: scale(1.1);
- 
-  
 }
 
 .botonelimminar {
@@ -289,7 +475,6 @@ function Eliminar(i) {
   padding: 5px;
 }
 .carros {
-
   padding: 20px 200px;
   display: flex;
   flex-wrap: wrap;
@@ -309,8 +494,7 @@ function Eliminar(i) {
 }
 
 .tarjeta {
-
-  background-color: #E2F3F5;
+  background-color: #e2f3f5;
 
   border: 3px solid #000000;
   display: flex;
