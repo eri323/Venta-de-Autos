@@ -50,8 +50,8 @@
                   <tr>
                     <th style="border-top-left-radius: 25px">Vehiculo</th>
                     <th>Cantidad</th>
-                    <th>Precio</th>
                     <th>Subtotal</th>
+                    <th>Precio</th>
                     <th>Modelo</th>
                     <th style="border-top-right-radius: 25px">Opciones</th>
                   </tr>
