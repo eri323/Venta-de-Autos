@@ -156,19 +156,7 @@
                       aria-label="Slide 3"></button>
                   </div>
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="./img/image-removebg-preview (29).png" class="d-block w-100" alt="...">
-
-                    </div>
-                    <div class="carousel-item">
-                      <img src="./img/car-mercedes-benz-mercedes-amg-mercedes-amg-gt-wallpaper-preview.jpg"
-                        class="d-block w-100" alt="...">
-
-                    </div>
-                    <div class="carousel-item">
-                      <img src="./img/fondo.png" class="d-block w-100" alt="...">
-
-                    </div>
+                    
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                     data-bs-slide="prev">
