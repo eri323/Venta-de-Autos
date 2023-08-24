@@ -36,7 +36,7 @@
         </button>
       </div>
       <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" id="modal-dialog1">
           <div class="modal-content" id="modal-contentre">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -44,7 +44,7 @@
               </h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" ref="modalbody">
+            <div class="modal-body"  id="modal-body1" ref="modalbody">
               <table class="table">
                 <thead class="thead">
                   <tr>
@@ -455,7 +455,7 @@ tr:nth-child(odd) {
   align-items: baseline;
 }
 #modal-contentre {
-  width: 1000px;
+  width: 750px;
 }
 .containerinfotabla {
   text-align: center;
@@ -483,6 +483,7 @@ tr:nth-child(odd) {
 
 .table {
   border-collapse: collapse;
+  width: 700px;
 }
 
 .thead,
@@ -535,6 +536,7 @@ td {
   background-color: #3d5af1;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   padding: 10px;
   justify-content: space-around;
   align-items: center;
@@ -551,6 +553,7 @@ td {
 
 .barraopc {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 35px;
   color: #b6b6b6;
@@ -688,6 +691,13 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
+}
+#modal-body1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 400px;
 }
 
 .carousel-inner {
@@ -739,5 +749,27 @@ img {
 .opcstext:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+@media screen and (max-width:838px) {
+  .intro{
+    width: 100%;
+    text-align: center;
+  }
+}
+@media screen and (max-width:756px) {
+  .carros{
+    padding: 20px 100px;
+  }
+}
+@media screen and (max-width:568px) {
+  .carros{
+    padding: 20px 0px;
+  }
+}
+@media screen and (max-width:359px) {
+  .tarjeta{
+    width: 300px;
+  }
 }
 </style>
