@@ -32,7 +32,7 @@
       </div>
       <div class="barraimg">
         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="opcsboton">
-          <img src="./img/carrito.png" alt="" class="img" />
+          <img src="https://th.bing.com/th/id/R.d01f6a524827d080143ba7b6a4fd2961?rik=csLHhRB6q%2f4LMg&pid=ImgRaw&r=0" alt="" class="img" />
         </button>
       </div>
       <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -525,7 +525,7 @@ td {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-image: url(./img/balco1.jpg);
+  background-image: url(https://images.caricos.com/m/mercedes-benz/2022_mercedes-benz_c-class/images/2560x1440/2022_mercedes-benz_c-class_45_2560x1440.jpg);
   height: 80vh;
   background-size: cover;
   object-fit: cover;
