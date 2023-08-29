@@ -128,6 +128,11 @@
                       }}
                     </td>
                   </tr>
+                  <tr>
+                    <td>
+                      <button @click="vaciarCarrito()" class="vaciarCarrito">Vaciar</button>
+                    </td>
+                  </tr>
                 </tfoot>
               </table>
             </div>
@@ -173,31 +178,32 @@
             <div class="textos">
               <h5 class="km" id="datos">{{ tarje.Kilometraje }}</h5>
               <h5 class="año" id="datos">{{ tarje.Año }}</h5>
-              <h5 class="placa" id="datos">{{ tarje.Placa }}</h5>
+
             </div>
-            <div class="botones">
-              <div data-tooltip="Price:-$20" class="button">
-                <button class="button-wrapper" @click="añadirP(i)">
-                  <div class="text">Buy Now</div>
-                  <span class="icon">
-                    <svg
-                      viewBox="0 0 16 16"
-                      class="bi bi-cart2"
-                      fill="currentColor"
-                      height="16"
-                      width="16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
-                      ></path>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </div>
+            
           </div>
         </button>
+        <div class="botones">
+                <div data-tooltip="Price:-$20" class="button">
+                  <button class="button-wrapper" @click="añadirP(i)">
+                    <div class="text">Añadir</div>
+                    <span class="icon">
+                      <svg
+                        viewBox="0 0 16 16"
+                        class="bi bi-cart2"
+                        fill="currentColor"
+                        height="16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                        ></path>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
       </div>
       <div
         class="modal fade"
@@ -912,7 +918,7 @@ td {
   display: flex;
   justify-content: center;
   border-top: 3px solid black;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #3d5af1;
 }
 .textBarra3 {
   width: 700px;
@@ -1024,12 +1030,12 @@ h4 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  background-color: #26292b;
+  background-color: #000000;
 }
 
 .textos {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: space-around;
 }
 
@@ -1038,24 +1044,33 @@ h4 {
   height: 200px;
 }
 
-.tarjeta .botonContainer {
+.tarjeta {
   background-color: #e2f3f5;
-
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 15px;
+  border-radius: 15px;
+}
+ .botonContainer{
+   background-color: #e2f3f5;
   display: flex;
   flex-direction: column;
   gap: 15px;
   font-size: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 2rem 1.5rem;
-
   height: 300px;
-}
+  border-radius: 15px;
+ }
 
 #datos {
-  color: rgb(0, 0, 0);
-  background-color: white;
-  padding: 5px;
-  border-radius: 15px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding: 7px;
+  border-radius: 10px;
   border: none;
 }
 
@@ -1111,19 +1126,27 @@ img {
   background-color: #000000;
 }
 
-.opcstext:hover {
-  color: white;
-}
 
-.opcstext:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+@media screen and (max-width: 1000px) {
+  .table{
+    width: 500px;
+  }
+  .table, td{
+    padding: 0;
+    width: 100px;
+  }
 }
-
 @media screen and (max-width: 838px) {
   .intro {
     width: 100%;
     text-align: center;
+  }
+    .table{
+    width: 300px;
+  }
+  .table, td{
+    padding: 0;
+    width: 60px;
   }
 }
 @media screen and (max-width: 756px) {
@@ -1157,6 +1180,7 @@ img {
   width: 100%;
   opacity: 0;
   transition: transform 0.2s ease, opacity 0.2s ease;
+  gap: 10px;
 }
 /*Hover*/
 .tarjeta:hover {
@@ -1176,5 +1200,22 @@ img {
 .tarjeta:hover .card-social {
   transform: translateY(10%) translateX(0%);
   opacity: 1;
+}
+
+.tarjeta:hover .button{
+  transform: translateY(215%)
+  
+}
+
+.vaciarCarrito{
+  background-color: #3d5af1;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+}
+.vaciarCarrito:hover{
+   border-radius: 15px;
+   transform: scale(1,1);
 }
 </style>
