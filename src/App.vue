@@ -69,10 +69,9 @@
                 <thead class="thead">
                   <tr>
                     <th style="border-top-left-radius: 25px">Vehiculo</th>
-                    <th>Cantidad</th>
+                    <th>Cant</th>
                     <th>Subtotal</th>
                     <th>Precio</th>
-                    <th>Modelo</th>
                     <th style="border-top-right-radius: 25px">Opciones</th>
                   </tr>
                 </thead>
@@ -104,7 +103,6 @@
                         })
                       }}
                     </td>
-                    <td>{{ tarjec.Modelo }}</td>
                     <td>
                       <button @click="Eliminar(i)" class="botonelimminar">
                         ❌
@@ -226,9 +224,10 @@
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                @click="limpiarModal(i)"
               ></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body2">
               <div
                 id="carouselExampleDark"
                 class="carousel carousel-dark slide"
@@ -813,9 +812,9 @@ function vaciarCarrito() {
   justify-content: center;
   font-family: "Mia";
 }
-
-tr:nth-child(odd) {
+.tableinfo tr:nth-child(odd) {
   background-color: #a0f1ff;
+  width: 100%;
 }
 
 .containerinfomodal {
@@ -824,7 +823,8 @@ tr:nth-child(odd) {
   align-items: baseline;
 }
 #modal-contentre {
-  width: 750px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .containerinfotabla {
   text-align: center;
@@ -852,25 +852,28 @@ tr:nth-child(odd) {
 
 .table {
   border-collapse: collapse;
-  width: 700px;
+  display: flex;
+  flex-direction: column;
+
 }
 
-.thead,
-th {
+
+th{
   background-color: #3d5af1;
   color: white;
   border-bottom: 3px solid black;
+  padding: 10px 20px;
 }
 
 .textoenca {
   color: white;
 }
 
-.tbody,
-tr,
-td {
+tr{
   padding: 10px;
   text-align: center;
+  width: 10px;
+  display: flex;
 }
 
 .textoencacontainer {
@@ -1025,11 +1028,11 @@ h4 {
 }
 
 .carros {
-  padding: 20px 200px;
+  padding: 20px 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 55px;
   background-color: #000000;
 }
 
@@ -1048,7 +1051,6 @@ h4 {
   background-color: #e2f3f5;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   font-size: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding-bottom: 15px;
@@ -1074,17 +1076,18 @@ h4 {
   border: none;
 }
 
-.modal-body {
+#modal-body2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
 }
+
 #modal-body1 {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 400px;
+ 
 }
 
 .carousel-inner {
@@ -1128,37 +1131,37 @@ img {
 
 
 @media screen and (max-width: 1000px) {
-  .table{
-    width: 500px;
-  }
-  .table, td{
-    padding: 0;
-    width: 100px;
-  }
+
 }
 @media screen and (max-width: 838px) {
   .intro {
     width: 100%;
     text-align: center;
   }
-    .table{
-    width: 300px;
-  }
-  .table, td{
-    padding: 0;
-    width: 60px;
-  }
+  
 }
 @media screen and (max-width: 756px) {
   .carros {
-    padding: 20px 100px;
+    padding: 20px 70px;
   }
 }
 @media screen and (max-width: 568px) {
   .carros {
     padding: 20px 0px;
   }
-}
+  #modal-body1{
+    padding: 0;
+  }
+  .tbody td{
+    padding: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.105);
+    display: flex;
+    align-items: center;
+  }
+  .thead th{
+    padding: 10px 17px;
+  }
+ }
 @media screen and (max-width: 359px) {
   .tarjeta {
     width: 300px;
@@ -1191,19 +1194,25 @@ img {
   flex-direction: column;
   gap: 15px;
   font-size: 15px;
+  transition: 0.5s ease-in-out;
+  transform: scale(1.1);
+  margin: 20px 10px 20px 10px;
 }
 
 .tarjeta:hover .divimg {
   transform: translateY(0%);
+  transition: 0.5s ease-in-out;
 }
 
 .tarjeta:hover .card-social {
   transform: translateY(10%) translateX(0%);
   opacity: 1;
+  transition: 0.5s ease-in-out;
 }
 
 .tarjeta:hover .button{
   transform: translateY(215%)
+  
   
 }
 
@@ -1218,4 +1227,5 @@ img {
    border-radius: 15px;
    transform: scale(1,1);
 }
+
 </style>
