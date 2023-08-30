@@ -16,7 +16,6 @@
     <div class="barra1">
       <div class="Pbarra">
         <h1 class="titulo">Fast and safe</h1>
-       
       </div>
       <div class="textoencacontainer">
         <div class="textoenca">
@@ -32,18 +31,40 @@
     <div class="barra2">
       <div class="barraopc">
         <div class="container">
-          <input type="text" name="text" class="input" required="" placeholder="Type to search...">
+          <input
+            type="text"
+            name="text"
+            class="input"
+            required=""
+            placeholder="Type to search..."
+          />
           <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                  <title>Search</title>
-                  <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
-              </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <title>Search</title>
+              <path
+                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+                fill="none"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="32"
+              ></path>
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                stroke-width="32"
+                d="M338.29 338.29L448 448"
+              ></path>
+            </svg>
           </div>
+        </div>
       </div>
-       
-      </div>
-      
+
       <div
         class="modal"
         id="exampleModal"
@@ -128,7 +149,9 @@
                   </tr>
                   <tr>
                     <td>
-                      <button @click="vaciarCarrito()" class="vaciarCarrito">Vaciar</button>
+                      <button @click="vaciarCarrito()" class="vaciarCarrito">
+                        Vaciar
+                      </button>
                     </td>
                   </tr>
                 </tfoot>
@@ -176,32 +199,30 @@
             <div class="textos">
               <h5 class="km" id="datos">{{ tarje.Kilometraje }}</h5>
               <h5 class="año" id="datos">{{ tarje.Año }}</h5>
-
             </div>
-            
           </div>
         </button>
         <div class="botones">
-                <div data-tooltip="Price:-$20" class="button">
-                  <button class="button-wrapper" @click="añadirP(i)">
-                    <div class="text">Añadir</div>
-                    <span class="icon">
-                      <svg
-                        viewBox="0 0 16 16"
-                        class="bi bi-cart2"
-                        fill="currentColor"
-                        height="16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-              </div>
+          <div data-tooltip="Price:-$20" class="button">
+            <button class="button-wrapper" @click="añadirP(i)">
+              <div class="text">Añadir</div>
+              <span class="icon">
+                <svg
+                  viewBox="0 0 16 16"
+                  class="bi bi-cart2"
+                  fill="currentColor"
+                  height="16"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
       <div
         class="modal fade"
@@ -211,7 +232,6 @@
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
-
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -300,42 +320,58 @@
                     </tr>
                     <tr>
                       <td>
-                        Precio: ${{
-                          tarjeta.Precio.toLocaleString("es-ES", {
-                            style: "currency",
-                            currency: "COP",
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 2,
-                          })
-                        }}
+                        <span>
+                          Precio: ${{
+                            tarjeta.Precio.toLocaleString("es-ES", {
+                              style: "currency",
+                              currency: "COP",
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 2,
+                            })
+                          }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>Kilometraje: {{ tarjeta.Kilometraje }}</td>
+                      <td>
+                        <span>Kilometraje: {{ tarjeta.Kilometraje }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td>Año: {{ tarjeta.Año }}</td>
+                      <td>
+                        <span>Año: {{ tarjeta.Año }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td>Placa: {{ tarjeta.Placa }}</td>
+                      <td>
+                        <span>Placa: {{ tarjeta.Placa }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td>Combustible: {{ tarjeta.Combustible }}</td>
+                      <td>
+                        <span>Combustible: {{ tarjeta.Combustible }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td>Motor: {{ tarjeta.Motor }}</td>
+                      <td>
+                        <span>Motor: {{ tarjeta.Motor }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td>Color: {{ tarjeta.Color }}</td>
+                      <td>
+                        <span> Color: {{ tarjeta.Color }}</span>
+                      </td>
                     </tr>
                     <tr>
-                      <td
+                      <td 
                         style="
                           border-bottom-left-radius: 15px;
                           border-bottom-right-radius: 15px;
                         "
-                      >
+                      ><span>
                         Transmision: {{ tarjeta.Transmision }}
+                      </span>
+                       
                       </td>
                     </tr>
                   </table>
@@ -360,32 +396,48 @@
               >
                 Close
               </button>
+      
+         
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
   <div class="footer">
     <div class="card">
       <a class="socialContainer containerOne" href="#">
-        <svg viewBox="0 0 16 16" class="socialSvg instagramSvg"> <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path> </svg>
+        <svg viewBox="0 0 16 16" class="socialSvg instagramSvg">
+          <path
+            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+          ></path>
+        </svg>
       </a>
-      
+
       <a class="socialContainer containerTwo" href="#">
-        <svg viewBox="0 0 16 16" class="socialSvg twitterSvg"> <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path> </svg>              </a>
-        
+        <svg viewBox="0 0 16 16" class="socialSvg twitterSvg">
+          <path
+            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+          ></path>
+        </svg>
+      </a>
+
       <a class="socialContainer containerThree" href="#">
-        <svg viewBox="0 0 448 512" class="socialSvg linkdinSvg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+        <svg viewBox="0 0 448 512" class="socialSvg linkdinSvg">
+          <path
+            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+          ></path>
+        </svg>
       </a>
-      
+
       <a class="socialContainer containerFour" href="#">
-        <svg viewBox="0 0 16 16" class="socialSvg whatsappSvg"> <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path> </svg>
+        <svg viewBox="0 0 16 16" class="socialSvg whatsappSvg">
+          <path
+            d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
+          ></path>
+        </svg>
       </a>
-    </div>             
-    
-    
+    </div>
   </div>
 </template>
 
@@ -581,12 +633,10 @@ function vaciarCarrito() {
 </script>
 
 <style scoped>
-
 .container {
   position: relative;
   --size-button: 40px;
   color: white;
-
 }
 
 .input {
@@ -598,8 +648,9 @@ function vaciarCarrito() {
   outline: none;
   width: var(--size-button);
   transition: all ease 0.3s;
-  background-color: #191A1E;
-  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  background-color: #191a1e;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%),
+    inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -608,7 +659,8 @@ function vaciarCarrito() {
 .input:not(:invalid) {
   width: 500px;
   cursor: text;
-  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%),
+    inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
 }
 
 .input:focus + .icon,
@@ -632,13 +684,12 @@ function vaciarCarrito() {
   height: 100%;
 }
 
-.barraimg{
+.barraimg {
   position: fixed;
   padding: 20px;
 }
-.footer{
+.footer {
   width: 100%;
-
 }
 .card {
   background-color: #3d5af1;
@@ -661,32 +712,32 @@ function vaciarCarrito() {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 /* instagram*/
 .containerOne:hover {
   background-color: #d62976;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 /* twitter*/
 .containerTwo:hover {
   background-color: #00acee;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 /* linkdin*/
 .containerThree:hover {
   background-color: #0072b1;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 /* Whatsapp*/
 .containerFour:hover {
-  background-color: #128C7E;
-  transition-duration: .3s;
+  background-color: #128c7e;
+  transition-duration: 0.3s;
 }
 
 .socialContainer:active {
   transform: scale(0.9);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 
 .socialSvg {
@@ -712,8 +763,6 @@ function vaciarCarrito() {
     opacity: 1;
   }
 }
-
-
 
 .button {
   --width: 100px;
@@ -814,7 +863,7 @@ function vaciarCarrito() {
 }
 .tableinfo tr:nth-child(odd) {
   background-color: #a0f1ff;
-  width: 100%;
+
 }
 
 .containerinfomodal {
@@ -854,11 +903,9 @@ function vaciarCarrito() {
   border-collapse: collapse;
   display: flex;
   flex-direction: column;
-
 }
 
-
-th{
+th {
   background-color: #3d5af1;
   color: white;
   border-bottom: 3px solid black;
@@ -869,10 +916,9 @@ th{
   color: white;
 }
 
-tr{
+tr {
   padding: 10px;
   text-align: center;
-  width: 10px;
   display: flex;
 }
 
@@ -890,7 +936,6 @@ tr{
 
 .modal {
   color: black;
-  
 }
 
 .barra1 {
@@ -1056,8 +1101,8 @@ h4 {
   padding-bottom: 15px;
   border-radius: 15px;
 }
- .botonContainer{
-   background-color: #e2f3f5;
+.botonContainer {
+  background-color: #e2f3f5;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -1066,7 +1111,7 @@ h4 {
   padding: 2rem 1.5rem;
   height: 300px;
   border-radius: 15px;
- }
+}
 
 #datos {
   color: rgb(255, 255, 255);
@@ -1087,7 +1132,6 @@ h4 {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
- 
 }
 
 .carousel-inner {
@@ -1129,16 +1173,13 @@ img {
   background-color: #000000;
 }
 
-
 @media screen and (max-width: 1000px) {
-
 }
 @media screen and (max-width: 838px) {
   .intro {
     width: 100%;
     text-align: center;
   }
-  
 }
 @media screen and (max-width: 756px) {
   .carros {
@@ -1149,19 +1190,19 @@ img {
   .carros {
     padding: 20px 0px;
   }
-  #modal-body1{
+  #modal-body1 {
     padding: 0;
   }
-  .tbody td{
+  .tbody td {
     padding: 4px;
     border: 2px solid rgba(0, 0, 0, 0.105);
     display: flex;
     align-items: center;
   }
-  .thead th{
+  .thead th {
     padding: 10px 17px;
   }
- }
+}
 @media screen and (max-width: 359px) {
   .tarjeta {
     width: 300px;
@@ -1210,22 +1251,19 @@ img {
   transition: 0.5s ease-in-out;
 }
 
-.tarjeta:hover .button{
-  transform: translateY(215%)
-  
-  
+.tarjeta:hover .button {
+  transform: translateY(215%);
 }
 
-.vaciarCarrito{
+.vaciarCarrito {
   background-color: #3d5af1;
   color: white;
   border: none;
   padding: 10px;
   font-weight: bold;
 }
-.vaciarCarrito:hover{
-   border-radius: 15px;
-   transform: scale(1,1);
+.vaciarCarrito:hover {
+  border-radius: 15px;
+  transform: scale(1, 1);
 }
-
 </style>
