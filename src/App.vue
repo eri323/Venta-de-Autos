@@ -18,19 +18,12 @@
         <h1 class="titulo">Fast and safe</h1>
       </div>
       <div class="textoencacontainer">
-        <div class="textoenca">
-          <p class="intro">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
-            quas, laborum sequi iure quod officia doloribus earum consectetur
-            praesentium quam eius reiciendis magnam sapiente beatae quia
-            provident. Asperiores, nostrum laudantium.
-          </p>
-        </div>
+        
       </div>
     </div>
     <div class="barra2">
       <div class="barraopc">
-        <div class="container">
+        <!-- <div class="container">
           <input
             type="text"
             name="text"
@@ -62,7 +55,7 @@
               ></path>
             </svg>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div
@@ -1090,6 +1083,10 @@ h4 {
 #carrostarjetas {
   width: 300px;
   height: 200px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .tarjeta {
@@ -1100,6 +1097,8 @@ h4 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding-bottom: 15px;
   border-radius: 15px;
+  height: 420px;
+
 }
 .botonContainer {
   background-color: #e2f3f5;
@@ -1108,7 +1107,7 @@ h4 {
   gap: 15px;
   font-size: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 2rem 1.5rem;
+  padding: 0;
   height: 300px;
   border-radius: 15px;
 }
@@ -1227,7 +1226,7 @@ img {
   gap: 10px;
 }
 /*Hover*/
-.tarjeta:hover {
+/*.tarjeta:hover {
   box-shadow: 0 8px 50px #23232333;
   height: 440px;
   background-color: #e2f3f5;
@@ -1238,20 +1237,20 @@ img {
   transition: 0.5s ease-in-out;
   transform: scale(1.1);
   margin: 20px 10px 20px 10px;
-}
+}*/
 
 .tarjeta:hover .divimg {
   transform: translateY(0%);
   transition: 0.5s ease-in-out;
 }
 
-.tarjeta:hover .card-social {
+ .card-social {
   transform: translateY(10%) translateX(0%);
   opacity: 1;
   transition: 0.5s ease-in-out;
 }
 
-.tarjeta:hover .button {
+.button {
   transform: translateY(215%);
 }
 
@@ -1261,9 +1260,6 @@ img {
   border: none;
   padding: 10px;
   font-weight: bold;
-}
-.vaciarCarrito:hover {
   border-radius: 15px;
-  transform: scale(1, 1);
 }
 </style>
